@@ -1,0 +1,6 @@
+From the server directory
+docker built -t tamb . 
+
+then docker-compose up -d to bring up the docker server
+
+

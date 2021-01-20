@@ -1,0 +1,21 @@
+version: '3'
+services:
+  redis:
+    image: "redis:5.0-alpine"
+    container_name: "redis"
+    networks:
+     - "front"
+  anagram-host:
+    image: "tamb"
+    ports:
+     - "5006:5006"
+    depends_on:
+      - "redis"
+    networks:
+     - "front"
+    working_dir: "/host-agent/"
+    command: "python3 server_tambola.py"
+networks:
+    front:
+        # use the bridge driver, but enable IPv6
+        driver: bridge
